@@ -44,8 +44,7 @@ public class MainActivity extends Activity {
     }
     
     public String readRSS() throws XmlPullParserException, IOException{
-		String data = "Hello";
-		
+		String data="";
 		Reader in = null;
 		try {
 			in = new InputStreamReader(getAssets().open("employeedetails.xml"));
@@ -79,11 +78,12 @@ public class MainActivity extends Activity {
 					data = data + "Email: " + par.nextText() + "\n";
 				else if(name.equals("phoneno"))
 					data = data+ "Ph.No: " + par.nextText() + "\n";
+				Toast.makeText(getApplicationContext(), data, Toast.LENGTH_SHORT).show();
 			}
 			
 			else if(event==XmlPullParser.END_TAG){
 				if(name.equals("employee")){
-					data = data = "\n\n";
+					data = data + "\n";
 				}
 			}
 			
